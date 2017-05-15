@@ -8,6 +8,7 @@ PRICE_POS = 17
 SHARES_UNADJUSTED_POS = 1
 SPLIT_FACTOR_POS = 2 # Not actually the split factor pos, but just to delete
 
+CHECK_POS = [[17], [18], [19], [11], [12]]
 
 def fix_features(table):
     # Next Price is the forward quarter price and
@@ -18,9 +19,14 @@ def fix_features(table):
     for pos, item in enumerate(table[1:]):
         #
         to_del = np.where(np.array(item)=='None')
-        if len(to_del[0]) > 0:
+        if CHECK_POS in to_del[0]:#len(to_del[0]) > 0:
             pass
         else:
+            if len(to_del[0]) > 0:
+                # print to_del[0]
+                for del_id in to_del[0]:
+                    item[del_id] = 0
+
             # Adds the output variable which is the next quarter's percent gain
             cur_price = float(item[PRICE_POS])
             gain = next_price/cur_price
