@@ -86,6 +86,7 @@ for i in range(len(csv_names)):
                 begin_ind = 0
                 my_data[0].append('Gain')
                 my_data[0].append('Id')
+                my_data[0].append('Symbol')
                 del my_data[0][SHARES_UNADJUSTED_POS]
                 del my_data[0][SPLIT_FACTOR_POS]
 
@@ -96,4 +97,5 @@ for i in range(len(csv_names)):
                         pass
                     else:
                         my_data[j].append(stock_ids[i])
+                        my_data[j].append(stocks[i])
                     writer.writerow(my_data[j])

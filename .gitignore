@@ -1,4 +1,10 @@
-.pdf
-.csv
-.txt
+*.pdf
+*.csv
+*.txt
+*.DS_Store 
+*.doc 
+*.docx
+*.xlsx
+*.json
 
+.ipynb_checkpoints/
